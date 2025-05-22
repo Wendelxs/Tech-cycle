@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Cycle - Pontos de Coleta</title>
+  <link rel="stylesheet" href="mapa.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="shortcut icon" href="/Techycle1/imgs/icon.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/Techycle1/imgs/logo.png" alt="Tech Cycle" />
+      </div>
+      <nav class="menu">
+        <a href="index.html"><i class="fa-solid fa-location-dot"></i> Rotas</a>
+        <a href="mapa.html" class="active"><i class="fa-solid fa-handshake-angle"></i> Pontos de Coletas</a>
+        <a href="#"><i class="fa-solid fa-boxes-stacked"></i> Embalagens</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> Configurações</a>
+        <a href="#"><i class="fa-solid fa-door-open"></i> Sair</a>
+      </nav>
+
+      <nav class="menu2">
+        <a href="#"><i class="fa-solid fa-chart-simple"></i> Relatórios</a>
+        <a href="#"><i class="fa-solid fa-question"></i> Ajuda</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <div class="dropdown">
+          <button class="dropdown-btn">
+            <img src="/Techycle1/imgs/icon.png" alt="Ícone" class="dropdown-icon">
+            Reutilize a tecnologia
+          </button>
+        </div>
+        <div class="icons">
+          <button><i class="fa-solid fa-bell"></i></button>
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button><i class="fa-solid fa-list-ul"></i></button>
+        </div>
+      </header>
+
+      <section class="map-container">
+        <div id="map"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+  <script src="mapa.js"></script>
+</body>
+</html>
