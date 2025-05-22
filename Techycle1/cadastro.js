@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //  Redirecionamento para a página inicial 
         setTimeout(() => {
-            window.location.href = 'Tech-cycle/Techycle1/index.html';
+            window.location.href = 'index.html';
         }, 1500);
     });
 });
