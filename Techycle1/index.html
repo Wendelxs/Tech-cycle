@@ -3,37 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tech Cycle </title>
+  <title>Tech Cycle</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link rel="shortcut icon" href="/Techycle1/imgs/icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="imgs/icon.png" type="image/x-icon">
 </head>
 
 <body>
   <div class="container">
     <aside class="sidebar">
       <div class="logo">
-        <img src="/Techycle1/imgs/logo.png" alt="Tech Cycle" />
+        <img src="imgs/logo.png" alt="Tech Cycle" />
       </div>
       <nav class="menu">
-        <a href="#"><i class="fa-solid fa-location-dot"></i> Rotas</a>
-        <a href="#"><i class="fa-solid fa-handshake-angle"></i> Pontos de Coletas</a>
+        <a href="#" class="active"><i class="fa-solid fa-location-dot"></i> Rotas</a>
+        <a href=""><i class="fa-solid fa-handshake-angle"></i> Pontos de Coletas</a>
         <a href="#"><i class="fa-solid fa-boxes-stacked"></i> Embalagens</a>
         <a href="#"><i class="fa-solid fa-gear"></i> Configurações</a>
         <a href="#"><i class="fa-solid fa-door-open"></i> Sair</a>
-        
       </nav>
 
       <nav class="menu2">
         <a href="#"><i class="fa-solid fa-chart-simple"></i> Relatórios</a>
         <a href="#"><i class="fa-solid fa-question"></i> Ajuda</a>
       </nav>
-
     </aside>
 
     <main class="main-content">
       <header class="header">
-        <div class="dropdown">Reuse Tech ▼</div>
+        <div class="dropdown">
+          <button class="dropdown-btn">
+            <img src="imgs/icon.png" alt="Ícone" class="dropdown-icon">
+            Reutilize a tecnologia
+          </button>
+        </div>
         <div class="icons">
           <button><i class="fa-solid fa-bell"></i></button>
           <button><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -42,23 +45,125 @@
       </header>
 
       <section class="dashboard">
-        <div class="blue-box"></div>
+        <div class="blue-box">
+          <div class="blue-box-content">
+            <h2>Otimização de rotas baseada na ocupação e localização dos pontos de coleta.</h2>
+            <button class="generate-route-btn">Gerar rota otimizada</button>
+          </div>
+        </div>
 
         <div class="collection-points">
-          <h3>Pontos de Coleta <a href="#">Ver mais</a></h3>
-          <ul>
-            <li><strong>Ponto A</strong> - Centro | Celulares Antigos | Capacidade: 80 kg</li>
-            <li><strong>Ponto B</strong> - Gleba B | Cabos e Baterias | Capacidade: 120 kg</li>
-            <li><strong>Ponto C</strong> - Bairro Novo | Placas Eletrônicas | Capacidade: 100 kg</li>
-          </ul>
+          <div class="section-header">
+            <h3>Pontos de Coleta</h3>
+            <a href="#" class="view-more">Ver mais <i class="fa-solid fa-square"></i></a>
+          </div>
+          <div class="collection-table">
+            <table>
+              <tr>
+                <th>Ponto A</th>
+                <th>Tipos de Resíduos</th>
+                <th>Capacidade</th>
+              </tr>
+              <tr>
+                <td>Centro</td>
+                <td>Celulares Antigos</td>
+                <td>80 kg</td>
+              </tr>
+              <tr>
+                <th>Ponto B</th>
+                <th>Tipos de Resíduos</th>
+                <th>Capacidade</th>
+              </tr>
+              <tr>
+                <td>Gleba A</td>
+                <td>Cabos e Baterias</td>
+                <td>120 kg</td>
+              </tr>
+              <tr>
+                <th>Ponto C</th>
+                <th>Tipos de Resíduos</th>
+                <th>Capacidade</th>
+              </tr>
+              <tr>
+                <td>Jardim Univerdade</td>
+                <td>Placas Eletrônicas</td>
+                <td>70 kg</td>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <div class="chart-area">
-          <h3>Capacidade Atual <a href="#">Ver mais</a></h3>
+          <div class="section-header">
+            <h3>Capacidade Atual</h3>
+            <a href="#" class="view-more">Ver mais <i class="fa-solid fa-square"></i></a>
+          </div>
           <div class="charts">
-            <div class="chart">Ponto A<br/><canvas id="chartA"></canvas></div>
-            <div class="chart">Ponto B<br/><canvas id="chartB"></canvas></div>
-            <div class="chart">Ponto C<br/><canvas id="chartC"></canvas></div>
+            <div class="chart">
+              <div class="chart-header">
+                <span>Ponto A</span>
+                <span class="location">Centro</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartA"></canvas>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <span class="legend-color filled"></span>
+                    <span class="legend-text">Ocupado</span>
+                    <span class="legend-value">25%</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color empty"></span>
+                    <span class="legend-text">Livre</span>
+                    <span class="legend-value">75%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="chart">
+              <div class="chart-header">
+                <span>Ponto B</span>
+                <span class="location">Gleba A</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartB"></canvas>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <span class="legend-color filled"></span>
+                    <span class="legend-text">Ocupado</span>
+                    <span class="legend-value">50%</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color empty"></span>
+                    <span class="legend-text">Livre</span>
+                    <span class="legend-value">50%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="chart">
+              <div class="chart-header">
+                <span>Ponto C</span>
+                <span class="location">Jardim Univerdade</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartC"></canvas>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <span class="legend-color filled"></span>
+                    <span class="legend-text">Ocupado</span>
+                    <span class="legend-value">0%</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color empty"></span>
+                    <span class="legend-text">Livre</span>
+                    <span class="legend-value">100%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -66,43 +171,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Gráfico de exemplo
-    const ctxA = document.getElementById('chartA').getContext('2d');
-    new Chart(ctxA, {
-      type: 'doughnut',
-      data: {
-        datasets: [{
-          data: [10, 90],
-          backgroundColor: ['#61a6c9', '#f9f9f9']
-        }]
-      },
-      options: { cutout: '70%', responsive: true }
-    });
-
-    const ctxB = document.getElementById('chartB').getContext('2d');
-    new Chart(ctxB, {
-      type: 'doughnut',
-      data: {
-        datasets: [{
-          data: [50, 50],
-          backgroundColor: ['#61a6c9', '#f9f9f9']
-        }]
-      },
-      options: { cutout: '70%', responsive: true }
-    });
-
-    const ctxC = document.getElementById('chartC').getContext('2d');
-    new Chart(ctxC, {
-      type: 'doughnut',
-      data: {
-        datasets: [{
-          data: [0, 100],
-          backgroundColor: ['#61a6c9', '#f9f9f9']
-        }]
-      },
-      options: { cutout: '70%', responsive: true }
-    });
-  </script>
+  <script src="imgs/script.js"></script>
 </body>
 </html>
