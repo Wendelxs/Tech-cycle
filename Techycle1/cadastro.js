@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Referências aos elementos do DOM
     const form = document.getElementById('cadastro-form');
     const togglePassword = document.getElementById('toggle-password');
     const senhaInput = document.getElementById('senha');
     const cnpjInput = document.getElementById('cnpj');
 
-    // Função para alternar visibilidade da senha
     togglePassword.addEventListener('click', function () {
         const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
         senhaInput.setAttribute('type', type);
 
-        // Alternar ícone
         const icon = this.querySelector('i');
         if (type === 'password') {
             icon.classList.remove('fa-eye-slash');
@@ -21,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Máscara para CNPJ
     cnpjInput.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '');
 

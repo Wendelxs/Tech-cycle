@@ -1,0 +1,178 @@
+/* Estilos para a página de configurações */
+.config-container {
+  padding: 20px;
+}
+
+.config-container h2 {
+  color: #5c7d29;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-bottom: 2px solid #5c7d29;
+  padding-bottom: 10px;
+}
+
+.config-section {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.config-section h3 {
+  color: #5c7d29;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+  font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  background-color: #f8f8f8;
+  color: #333;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  border-color: #61a6c9;
+  outline: none;
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: #5c7d29;
+}
+
+.checkbox-group label {
+  color: #333;
+  font-size: 16px;
+}
+
+.theme-options {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.theme-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.theme-preview {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  border: 2px solid transparent;
+}
+
+.theme-option.active .theme-preview {
+  border-color: #333;
+}
+
+.theme-option span {
+  font-size: 14px;
+  color: #666;
+}
+
+.config-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-salvar {
+  background-color: #5c7d29;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-salvar:hover {
+  background-color: #4a6621;
+}
+
+.btn-cancelar {
+  background-color: #f8f8f8;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-cancelar:hover {
+  background-color: #eee;
+}
+:root {
+  --primary-color: #5c7d29; /* Valor padrão */
+}
+
+.header {
+  background-color: var(--primary-color) !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Mantenha o restante do seu CSS existente */
+/* Responsividade */
+@media (max-width: 768px) {
+  .config-buttons {
+    flex-direction: column;
+  }
+  
+  .theme-options {
+    justify-content: center;
+  }
+}
