@@ -46,14 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
     options: chartOptions
   });
 
-  const generateRouteBtn = document.querySelector('.generate-route-btn');
-  if (generateRouteBtn) {
-    generateRouteBtn.addEventListener('click', function() {
-      alert('Gerando rota otimizada...');
-    });
-  }
-
-
   const viewMoreLinks = document.querySelectorAll('.view-more');
   viewMoreLinks.forEach(link => {
     link.addEventListener('click', function(e) {

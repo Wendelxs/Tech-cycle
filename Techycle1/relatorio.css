@@ -339,3 +339,30 @@
     grid-template-columns: 1fr;
   }
 }
+.sidebar {
+  width: 220px;
+  height: 103rem;
+  background-color: #5c7d29;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.menu2 a {
+  color: white;
+  text-decoration: none;
+  margin: 1rem 0.5rem;
+  display: block;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+.menu2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 56rem;
+  gap: 8px;
+  width: 100%;
+}
