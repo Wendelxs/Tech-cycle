@@ -19,14 +19,11 @@
       <nav class="menu">
         <a href="#" class="active"><i class="fa-solid fa-location-dot"></i> Rotas</a>
         <a href="mapa.html"><i class="fa-solid fa-handshake-angle"></i> Pontos de Coletas</a>
-        <a href="#"><i class="fa-solid fa-boxes-stacked"></i> Embalagens</a>
+        <a href="embalagens.html"><i class="fa-solid fa-boxes-stacked"></i> Embalagens</a>
         <a href="configuracoes.html"><i class="fa-solid fa-gear"></i> Configurações</a>
         <a href="cadastro.html"><i class="fa-solid fa-door-open"></i> Sair</a>
-      </nav>
-
-      <nav class="menu2">
-        <a href="#"><i class="fa-solid fa-chart-simple"></i> Relatórios</a>
-        <a href="#"><i class="fa-solid fa-question"></i> Ajuda</a>
+        <a href="ajuda.html"><i class="fa-solid fa-question"></i> Ajuda</a>
+        <a href="relatorio.html"><i class="fa-solid fa-newspaper"></i> Relatorio</a>
       </nav>
     </aside>
 
@@ -49,9 +46,44 @@
         <div class="blue-box">
           <div class="blue-box-content">
             <h2>Otimização de rotas baseada na ocupação e localização dos pontos de coleta.</h2>
-            <button class="generate-route-btn">Gerar rota otimizada</button>
+            <button class="generate-route-btn"><a href="https://qualp.com.br/#/" target="_blank">Gerar Rota</a></button>
           </div>
         </div>
+        <style>
+    .route-results {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f5f9ff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .route-summary {
+        margin-bottom: 15px;
+    }
+    
+    .route-steps ol {
+        padding-left: 20px;
+    }
+    
+    .route-steps li {
+        margin-bottom: 8px;
+    }
+    
+    .close-results-btn {
+        margin-top: 15px;
+        padding: 8px 16px;
+        background-color: #2c5cc5;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .close-results-btn:hover {
+        background-color: #1e4bb6;
+    }
+</style>
 
         <div class="collection-points">
           <div class="section-header">

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Cycle - Ajuda</title>
+  <link rel="stylesheet" href="noticacoes.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="ajuda.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="shortcut icon" href="imgs/icon.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="imgs/logo.png" alt="Tech Cycle" />
+      </div>
+      <nav class="menu">
+        <a href="index.html"><i class="fa-solid fa-location-dot"></i> Rotas</a>
+        <a href="mapa.html"><i class="fa-solid fa-handshake-angle"></i> Pontos de Coletas</a>
+        <a href="embalagens.html"><i class="fa-solid fa-boxes-stacked"></i> Embalagens</a>
+        <a href="configuracoes.html"><i class="fa-solid fa-gear"></i> Configurações</a>
+        <a href="cadastro.html"><i class="fa-solid fa-door-open"></i> Sair</a>
+      </nav>
+
+      <nav class="menu2">
+        <a href="relatorios.html"><i class="fa-solid fa-chart-simple"></i> Relatórios</a>
+        <a href="ajuda.html" class="active"><i class="fa-solid fa-question"></i> Ajuda</a>
+        <a href="https://qualp.com.br/#/garanta" target="_blank"><i class="fa-solid fa-link"></i> API QualP</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <div class="dropdown">
+          <button class="dropdown-btn">
+            <img src="imgs/icon.png" alt="Ícone" class="dropdown-icon">
+            Reutilize a tecnologia
+          </button>
+        </div>
+        <div class="icons">
+          <button><i class="fa-solid fa-bell"></i></button>
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button><i class="fa-solid fa-list-ul"></i></button>
+        </div>
+      </header>
+
+      <section class="ajuda-section">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-question-circle"></i> Central de Ajuda</h2>
+        </div>
+
+        <div class="ajuda-content">
+          <div class="ajuda-sidebar">
+            <div class="ajuda-search">
+              <input type="text" placeholder="Buscar ajuda...">
+              <button><i class="fa-solid fa-search"></i></button>
+            </div>
+            <div class="ajuda-topics">
+              <h3>Tópicos</h3>
+              <ul>
+                <li class="active"><a href="#inicio">Início</a></li>
+                <li><a href="#rotas">Rotas</a></li>
+                <li><a href="#pontos">Pontos de Coleta</a></li>
+                <li><a href="#embalagens">Embalagens</a></li>
+                <li><a href="#relatorios">Relatórios</a></li>
+                <li><a href="#configuracoes">Configurações</a></li>
+                <li><a href="#faq">Perguntas Frequentes</a></li>
+                <li><a href="#contato">Contato</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ajuda-main">
+            <div id="inicio" class="ajuda-article active">
+              <h2>Bem-vindo à Central de Ajuda do Tech Cycle</h2>
+              <p>Aqui você encontrará informações detalhadas sobre como utilizar todas as funcionalidades do sistema Tech Cycle para gerenciamento de resíduos eletrônicos.</p>
+              
+              <div class="ajuda-card">
+                <div class="ajuda-card-icon">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+                <div class="ajuda-card-content">
+                  <h3>Gerenciamento de Embalagens</h3>
+                  <p>Aprenda a cadastrar, editar e remover embalagens para diferentes tipos de resíduos eletrônicos.</p>
+                  <a href="#embalagens" class="ajuda-link">Ver mais</a>
+                </div>
+              </div>
+              
+              <div class="ajuda-card">
+                <div class="ajuda-card-icon">
+                  <i class="fa-solid fa-route"></i>
+                </div>
+                <div class="ajuda-card-content">
+                  <h3>Otimização de Rotas</h3>
+                  <p>Saiba como utilizar o sistema de otimização de rotas para coleta eficiente de resíduos.</p>
+                  <a href="#rotas" class="ajuda-link">Ver mais</a>
+                </div>
+              </div>
+              
+              <div class="ajuda-card">
+                <div class="ajuda-card-icon">
+                  <i class="fa-solid fa-chart-simple"></i>
+                </div>
+                <div class="ajuda-card-content">
+                  <h3>Relatórios e Análises</h3>
+                  <p>Aprenda a gerar e interpretar relatórios sobre coletas, capacidade e eficiência.</p>
+                  <a href="#relatorios" class="ajuda-link">Ver mais</a>
+                </div>
+              </div>
+            </div>
+
+            <div id="embalagens" class="ajuda-article">
+              <h2>Gerenciamento de Embalagens</h2>
+              
+              <div class="ajuda-section">
+                <h3>Como adicionar uma nova embalagem</h3>
+                <ol>
+                  <li>Acesse a seção "Embalagens" no menu lateral</li>
+                  <li>Clique no botão "Adicionar Embalagem" no canto superior direito</li>
+                  <li>Preencha todos os campos do formulário (Nome, Classificação e Tipo de Resíduo)</li>
+                  <li>Clique em "Adicionar Embalagem" para salvar</li>
+                </ol>
+                <div class="ajuda-tip">
+                  <strong>Dica:</strong> A classificação pode ser Primário, Secundário ou Terciário, dependendo do nível de proteção necessário para o resíduo.
+                </div>
+              </div>
+              
+              <div class="ajuda-section">
+                <h3>Como editar uma embalagem existente</h3>
+                <ol>
+                  <li>Na lista de embalagens, localize a embalagem que deseja editar</li>
+                  <li>Clique no ícone de lápis <i class="fa-solid fa-pen-to-square"></i> na coluna "Ações"</li>
+                  <li>Modifique os campos necessários no formulário</li>
+                  <li>Clique em "Salvar Alterações" para atualizar</li>
+                </ol>
+              </div>
+              
+              <div class="ajuda-section">
+                <h3>Como remover uma embalagem</h3>
+                <ol>
+                  <li>Na lista de embalagens, localize a embalagem que deseja remover</li>
+                  <li>Clique no ícone de lixeira <i class="fa-solid fa-trash"></i> na coluna "Ações"</li>
+                  <li>Confirme a exclusão quando solicitado</li>
+                </ol>
+                <div class="ajuda-warning">
+                  <strong>Atenção:</strong> A remoção de uma embalagem é permanente e não pode ser desfeita.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="interacoes.js"></script>
+  <script src="notificacoes.js"></script>
+  <script src="ajuda.js"></script>
+</body>
+</html>

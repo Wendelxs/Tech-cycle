@@ -13,7 +13,7 @@ body {
 
 .container {
   display: flex;
-  height: 100vh;
+  height: 110vh;
 }
 
 .sidebar {
@@ -76,7 +76,8 @@ body {
   width: 100%;
 }
 
-.menu a:hover, .menu2 a:hover{
+.menu a:hover,
+.menu2 a:hover {
   background-color: #48a7c7;
   border-radius: 20px;
   width: 200px;
@@ -209,7 +210,8 @@ body {
   font-size: 0.9rem;
 }
 
-.collection-table th, .collection-table td {
+.collection-table th,
+.collection-table td {
   padding: 8px;
   text-align: left;
 }
@@ -298,21 +300,29 @@ canvas {
   .container {
     flex-direction: column;
   }
-  
+
   .sidebar {
     width: 100%;
     height: auto;
   }
-  
+
   .dashboard {
     grid-template-columns: 1fr;
   }
-  
-  .blue-box, .collection-points, .chart-area {
+
+  .blue-box,
+  .collection-points,
+  .chart-area {
     grid-column: 1;
   }
-  
+
   .menu2 {
     margin-top: 20px;
   }
+}
+
+a {
+  text-decoration: none;
+  list-style: none;
+  color: #5c7d29;
 }

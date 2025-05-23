@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Cycle - Embalagens</title>
+  <link rel="stylesheet" href="noticacoes.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="embalagens.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="shortcut icon" href="imgs/icon.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="imgs/logo.png" alt="Tech Cycle" />
+      </div>
+      <nav class="menu">
+        <a href="index.html"><i class="fa-solid fa-location-dot"></i> Rotas</a>
+        <a href="mapa.html"><i class="fa-solid fa-handshake-angle"></i> Pontos de Coletas</a>
+        <a href="embalagens.html" class="active"><i class="fa-solid fa-boxes-stacked"></i> Embalagens</a>
+        <a href="configuracoes.html"><i class="fa-solid fa-gear"></i> Configurações</a>
+        <a href="cadastro.html"><i class="fa-solid fa-door-open"></i> Sair</a>
+      </nav>
+
+      <nav class="menu2">
+        <a href="relatorios.html"><i class="fa-solid fa-chart-simple"></i> Relatórios</a>
+        <a href="ajuda.html"><i class="fa-solid fa-question"></i> Ajuda</a>
+        <a href="https://qualp.com.br/#/garanta" target="_blank"><i class="fa-solid fa-link"></i> API QualP</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <div class="dropdown">
+          <button class="dropdown-btn">
+            <img src="imgs/icon.png" alt="Ícone" class="dropdown-icon">
+            Reutilize a tecnologia
+          </button>
+        </div>
+        <div class="icons">
+          <button><i class="fa-solid fa-bell"></i></button>
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button><i class="fa-solid fa-list-ul"></i></button>
+        </div>
+      </header>
+
+      <section class="embalagens-section">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-boxes-stacked"></i> Embalagens Cadastradas</h2>
+          <button id="adicionar-embalagem-btn" class="add-btn">Adicionar Embalagem</button>
+        </div>
+
+        <div class="embalagens-table">
+          <table>
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Nome</th>
+                <th>Classificação</th>
+                <th>Tipo de Resíduo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="embalagens-lista">
+              <tr>
+                <td>EMB-001</td>
+                <td>Embalagem plástico/isopor</td>
+                <td>Primário</td>
+                <td>Placas, chips e memórias RAM</td>
+                <td>
+                  <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="action-btn delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>EMB-002</td>
+                <td>Caixa de papelão reforçada</td>
+                <td>Secundário</td>
+                <td>Placas eletrônicas, cabos</td>
+                <td>
+                  <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="action-btn delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>EMB-003</td>
+                <td>Sacos plásticos transparentes</td>
+                <td>Primário</td>
+                <td>Cabos e periféricos pequenos</td>
+                <td>
+                  <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="action-btn delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>EMB-004</td>
+                <td>Caixa com espuma interna</td>
+                <td>Primário</td>
+                <td>Notebooks, tablets</td>
+                <td>
+                  <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="action-btn delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>EMB-005</td>
+                <td>Tambores plásticos vedados</td>
+                <td>Terciário</td>
+                <td>Baterias de lítio e chumbo</td>
+                <td>
+                  <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="action-btn delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>EMB-006</td>
+                <td>Envelope papel kraft reforçado</td>
+                <td>Primário</td>
+                <td>CDs, DVDs e disquetes</td>
+                <td>
+                  <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="action-btn delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Modal para adicionar/editar embalagem -->
+      <div id="embalagem-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Cadastrar Nova Embalagem</h3>
+            <button class="close-modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="embalagem-form">
+              <input type="hidden" id="embalagem-id" value="">
+              
+              <div class="form-group">
+                <label for="embalagem-nome">Nome</label>
+                <input type="text" id="embalagem-nome" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="embalagem-classificacao">Classificação</label>
+                <select id="embalagem-classificacao" required>
+                  <option value="">Selecione...</option>
+                  <option value="Primário">Primário</option>
+                  <option value="Secundário">Secundário</option>
+                  <option value="Terciário">Terciário</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="embalagem-tipo">Tipo de Resíduo</label>
+                <input type="text" id="embalagem-tipo" required>
+              </div>
+              
+              <div class="form-actions">
+                <button type="button" id="cancelar-embalagem">Cancelar</button>
+                <button type="submit" id="salvar-embalagem">Adicionar Embalagem</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <script src="interacoes.js"></script>
+  <script src="notificacoes.js"></script>
+  <script src="embalagens.js"></script>
+</body>
+</html>
