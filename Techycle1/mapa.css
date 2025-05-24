@@ -13,7 +13,7 @@ body {
 
 .container {
   display: flex;
-  height: 100vh;
+  height: 110vh;
 }
 
 .sidebar {
@@ -51,15 +51,6 @@ body {
   padding: 5px 10px;
 }
 
-.menu2 a {
-  color: white;
-  text-decoration: none;
-  margin: 1rem 0.5rem;
-  display: block;
-  font-weight: bold;
-  padding: 5px 10px;
-}
-
 .menu {
   display: flex;
   flex-direction: column;
@@ -82,8 +73,6 @@ body {
   width: 200px;
   font-size: 20px;
 }
-
-
 
 .main-content {
   flex: 1;
