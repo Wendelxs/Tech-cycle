@@ -8,7 +8,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Ícones personalizados
 var blueIcon = L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -38,8 +38,8 @@ map.on('click', function (e) {
 
   // Define o popup com a informação digitada
   if (descricao && descricao.trim() !== "") {
-    marker.bindPopup(`<b>${selectedType === 'blue' ? 'Ponto Azul' : 'Ponto Cinza'}</b><br>${descricao}`).openPopup();
+    marker.bindPopup(`<b>${selectedType === 'blue' ? 'Ponto Vermelho' : 'Ponto Cinza'}</b><br>${descricao}`).openPopup();
   } else {
-    marker.bindPopup(`<b>${selectedType === 'blue' ? 'Ponto Azul' : 'Ponto Cinza'}</b><br>Sem descrição.`).openPopup();
+    marker.bindPopup(`<b>${selectedType === 'blue' ? 'Ponto Vermelho' : 'Ponto Cinza'}</b><br>Sem descrição.`).openPopup();
   }
 });
