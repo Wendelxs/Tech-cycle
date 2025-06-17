@@ -1,5 +1,5 @@
 // Inicializa o mapa
-var map = L.map('map').setView([-12.6996, -38.3261], 16)
+var map = L.map('map').setView([-12.6996, -38.3261], 16);
 
 // Camada base do mapa
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -42,4 +42,9 @@ map.on('click', function (e) {
   } else {
     marker.bindPopup(`<b>${selectedType === 'blue' ? 'Ponto Vermelho' : 'Ponto Cinza'}</b><br>Sem descrição.`).openPopup();
   }
+
+  // Remover marcador ao dar dois cliques nele
+  marker.on('dblclick', function () {
+    map.removeLayer(marker);
+  });
 });
