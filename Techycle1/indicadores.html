@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Cycle - Relatórios com Gráficos</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .chart-container {
+      margin: 30px 0;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .chart-wrapper {
+      position: relative;
+      height: 400px;
+      margin: 20px 0;
+    }
+    .chart-controls {
+      margin-bottom: 15px;
+    }
+    .chart-type-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      margin-right: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .chart-type-btn.active {
+      background: #0056b3;
+    }
+    .chart-type-btn:hover {
+      background: #0056b3;
+    }
+    .chart-row {
+      display: flex;
+      gap: 20px;
+    }
+    .chart-container.half {
+      flex: 1;
+    }
+    .chart-container.half .chart-wrapper {
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Tech Cycle - Relatórios e Análises</h1>
+    
+    <!-- Gráfico 1: Desempenho dos KPIs ao Longo do Tempo -->
+    <div class="chart-container">
+      <h3>Desempenho dos KPIs ao Longo do Tempo</h3>
+      <div class="chart-controls">
+        <button class="chart-type-btn active" onclick="changeChartType('kpiTrendChart', 'line')">Linha</button>
+        <button class="chart-type-btn" onclick="changeChartType('kpiTrendChart', 'bar')">Barras</button>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="kpiTrendChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico 2: Volume de Coleta por Tipo de Resíduo -->
+    <div class="chart-container">
+      <h3>Volume de Coleta por Tipo de Resíduo</h3>
+      <div class="chart-controls">
+        <button class="chart-type-btn active" onclick="changeChartType('wasteVolumeChart', 'bar')">Barras</button>
+        <button class="chart-type-btn" onclick="changeChartType('wasteVolumeChart', 'pie')">Pizza</button>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="wasteVolumeChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráficos 3 e 4: Lado a lado -->
+    <div class="chart-row">
+      <div class="chart-container half">
+        <h3>Coletas por Ponto</h3>
+        <div class="chart-wrapper">
+          <canvas id="collectionsByPointChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container half">
+        <h3>Eficiência de Rotas por Região</h3>
+        <div class="chart-wrapper">
+          <canvas id="routeEfficiencyChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dados dos gráficos
+    const chartData = {
+      kpi_performance: {
+        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+        datasets: [
+          {
+            label: "Taxa de Coleta Efetiva (%)",
+            data: [85, 88, 90, 92, 91, 93],
+            borderColor: "#4CAF50",
+            backgroundColor: "rgba(76, 175, 80, 0.1)",
+            fill: false
+          },
+          {
+            label: "Eficiência das Rotas (km/ton)",
+            data: [13.5, 13.2, 13.0, 12.8, 12.5, 12.3],
+            borderColor: "#2196F3",
+            backgroundColor: "rgba(33, 150, 243, 0.1)",
+            fill: false
+          },
+          {
+            label: "Lead Time de Coleta (dias)",
+            data: [2.5, 2.3, 2.1, 2.0, 1.8, 1.7],
+            borderColor: "#FFC107",
+            backgroundColor: "rgba(255, 193, 7, 0.1)",
+            fill: false
+          }
+        ]
+      },
+      waste_volume_by_type: {
+        labels: ["Eletrônicos", "Baterias", "Cabos", "Plásticos", "Metais"],
+        data: [1200, 800, 500, 300, 200],
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF"]
+      },
+      collections_by_point: {
+        labels: ["Centro", "Gleba A", "Jardim Universidade", "Ponto Norte", "Ponto Sul"],
+        data: [150, 220, 180, 90, 300],
+        backgroundColor: ["#FF9F40", "#FFCD56", "#4BC0C0", "#36A2EB", "#9966FF"]
+      },
+      route_efficiency_by_region: {
+        labels: ["Norte", "Sul", "Leste", "Oeste", "Centro"],
+        data: [11.8, 13.2, 12.5, 14.0, 10.5],
+        backgroundColor: ["#C9CBCF", "#7BC0C0", "#FF9F40", "#FF6384", "#36A2EB"]
+      }
+    };
+
+    // Variáveis para armazenar as instâncias dos gráficos
+    let charts = {};
+
+    // Função para inicializar os gráficos
+    function initializeCharts() {
+      // Gráfico 1: KPI Trend Chart
+      const kpiTrendCtx = document.getElementById('kpiTrendChart').getContext('2d');
+      charts.kpiTrendChart = new Chart(kpiTrendCtx, {
+        type: 'line',
+        data: {
+          labels: chartData.kpi_performance.labels,
+          datasets: chartData.kpi_performance.datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+
+      // Gráfico 2: Waste Volume Chart
+      const wasteVolumeCtx = document.getElementById('wasteVolumeChart').getContext('2d');
+      charts.wasteVolumeChart = new Chart(wasteVolumeCtx, {
+        type: 'bar',
+        data: {
+          labels: chartData.waste_volume_by_type.labels,
+          datasets: [{
+            label: 'Volume (kg)',
+            data: chartData.waste_volume_by_type.data,
+            backgroundColor: chartData.waste_volume_by_type.backgroundColor,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+
+      // Gráfico 3: Collections by Point Chart
+      const collectionsByPointCtx = document.getElementById('collectionsByPointChart').getContext('2d');
+      charts.collectionsByPointChart = new Chart(collectionsByPointCtx, {
+        type: 'bar',
+        data: {
+          labels: chartData.collections_by_point.labels,
+          datasets: [{
+            label: 'Número de Coletas',
+            data: chartData.collections_by_point.data,
+            backgroundColor: chartData.collections_by_point.backgroundColor,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+
+      // Gráfico 4: Route Efficiency Chart
+      const routeEfficiencyCtx = document.getElementById('routeEfficiencyChart').getContext('2d');
+      charts.routeEfficiencyChart = new Chart(routeEfficiencyCtx, {
+        type: 'bar',
+        data: {
+          labels: chartData.route_efficiency_by_region.labels,
+          datasets: [{
+            label: 'Eficiência (km/ton)',
+            data: chartData.route_efficiency_by_region.data,
+            backgroundColor: chartData.route_efficiency_by_region.backgroundColor,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    // Função para alterar o tipo de gráfico
+    function changeChartType(chartId, newType) {
+      if (charts[chartId]) {
+        charts[chartId].destroy();
+        
+        let newData;
+        switch(chartId) {
+          case 'kpiTrendChart':
+            newData = {
+              labels: chartData.kpi_performance.labels,
+              datasets: chartData.kpi_performance.datasets
+            };
+            break;
+          case 'wasteVolumeChart':
+            if (newType === 'pie') {
+              newData = {
+                labels: chartData.waste_volume_by_type.labels,
+                datasets: [{
+                  data: chartData.waste_volume_by_type.data,
+                  backgroundColor: chartData.waste_volume_by_type.backgroundColor
+                }]
+              };
+            } else {
+              newData = {
+                labels: chartData.waste_volume_by_type.labels,
+                datasets: [{
+                  label: 'Volume (kg)',
+                  data: chartData.waste_volume_by_type.data,
+                  backgroundColor: chartData.waste_volume_by_type.backgroundColor,
+                  borderWidth: 1
+                }]
+              };
+            }
+            break;
+        }
+
+        const ctx = document.getElementById(chartId).getContext('2d');
+        charts[chartId] = new Chart(ctx, {
+          type: newType,
+          data: newData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: newType !== 'pie' ? {
+              y: {
+                beginAtZero: true
+              }
+            } : {},
+            plugins: {
+              legend: {
+                position: newType === 'pie' ? 'right' : 'bottom',
+                display: newType === 'pie' ? true : (chartId === 'kpiTrendChart')
+              }
+            }
+          }
+        });
+
+        // Atualizar botões ativos
+        const container = document.getElementById(chartId).closest('.chart-container');
+        container.querySelectorAll('.chart-type-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+      }
+    }
+
+    // Inicializar os gráficos quando a página carregar
+    document.addEventListener('DOMContentLoaded', initializeCharts);
+  </script>
+</body>
+</html>
+
