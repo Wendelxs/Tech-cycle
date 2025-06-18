@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tech Cycle - Relatórios</title>
+  <title>Tech Cycle - Relatorio</title>
   <link rel="stylesheet" href="Css/noticacoes.css">
   <link rel="stylesheet" href="Css/style.css" />
   <link rel="stylesheet" href="Css/relatorio.css" />
@@ -218,7 +218,7 @@
             </div>
           </div>
           <div class="chart-wrapper">
-            <canvas id="kpi-trend-chart"></canvas>
+            <img src="images/kpi_trend_chart.png" alt="Gráfico de Desempenho dos KPIs ao Longo do Tempo" style="width:100%; height:auto;">
           </div>
         </div>
 
@@ -231,7 +231,7 @@
             </div>
           </div>
           <div class="chart-wrapper">
-            <canvas id="residuos-chart"></canvas>
+            <img src="images/residuos_chart.png" alt="Gráfico de Volume de Coleta por Tipo de Resíduo" style="width:100%; height:auto;">
           </div>
         </div>
 
@@ -241,7 +241,7 @@
               <h3>Coletas por Ponto</h3>
             </div>
             <div class="chart-wrapper">
-              <canvas id="coletas-chart"></canvas>
+              <img src="images/coletas_chart.png" alt="Gráfico de Coletas por Ponto" style="width:100%; height:auto;">
             </div>
           </div>
 
@@ -250,7 +250,7 @@
               <h3>Eficiência de Rotas por Região</h3>
             </div>
             <div class="chart-wrapper">
-              <canvas id="eficiencia-chart"></canvas>
+              <img src="images/eficiencia_chart.png" alt="Gráfico de Eficiência de Rotas por Região" style="width:100%; height:auto;">
             </div>
           </div>
         </div>
@@ -400,51 +400,5 @@
               <select id="report-type-select">
                 <option value="summary">Resumo Geral</option>
                 <option value="kpi">Desempenho de KPIs</option>
-                <option value="collection">Coletas Detalhadas</option>
-                <option value="route">Análise de Rotas</option>
-                <option value="environmental">Impacto Ambiental</option>
-              </select>
-            </div>
-            <div class="report-period">
-              <h4>Período</h4>
-              <div class="date-inputs">
-                <input type="date" id="start-date" value="2025-04-01">
-                <span>até</span>
-                <input type="date" id="end-date" value="2025-05-31">
-              </div>
-            </div>
-            <div class="report-format">
-              <h4>Formato</h4>
-              <div class="format-options">
-                <label>
-                  <input type="radio" name="format" value="pdf" checked>
-                  <span>PDF</span>
-                </label>
-                <label>
-                  <input type="radio" name="format" value="excel">
-                  <span>Excel</span>
-                </label>
-                <label>
-                  <input type="radio" name="format" value="csv">
-                  <span>CSV</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="report-actions">
-            <button class="generate-btn">Gerar Relatório</button>
-            <button class="schedule-btn">Agendar Envio</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="Js/script.js"></script>
-  <script src="Js/interacoes.js"></script>
-  <script src="Js/notificacoes.js"></script>
-  <script src="Js/relatorio.js"></script>
-</body>
-</html>
-
+                <option val
+(Content truncated due to size limit. Use line ranges to read in chunks)
