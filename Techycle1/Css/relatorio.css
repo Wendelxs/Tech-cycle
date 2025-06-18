@@ -207,20 +207,6 @@
   color: white;
 }
 
-.chart-wrapper {
-  height: 300px;
-  position: relative;
-}
-
-.chart-row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.chart-container.half {
-  flex: 1;
-}
 
 /* Alerts Section */
 .alerts-section {
@@ -584,7 +570,7 @@
 
 .sidebar {
   width: 220px;
-  height: 103rem;
+  height: 200rem;
   background-color: #5c7d29;
   color: white;
   display: flex;
