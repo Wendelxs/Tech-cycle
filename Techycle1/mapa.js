@@ -48,3 +48,29 @@ map.on('click', function (e) {
     map.removeLayer(marker);
   });
 });
+
+// Função para buscar o nome da cidade pela localização do mapa
+function atualizarNomeCidade() {
+  var center = map.getCenter();
+  var url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${center.lat}&lon=${center.lng}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const cidade = data.address.city || data.address.town || data.address.village || "Cidade não encontrada";
+      document.getElementById("cidade").innerText = cidade;
+    })
+    .catch(() => {
+      document.getElementById("cidade").innerText = "Erro ao buscar cidade";
+    });
+}
+
+// Atualiza o nome da cidade ao carregar o mapa
+map.whenReady(() => {
+  atualizarNomeCidade();
+});
+
+// Atualiza o nome da cidade sempre que o usuário mover o mapa
+map.on("moveend", () => {
+  atualizarNomeCidade();
+});
